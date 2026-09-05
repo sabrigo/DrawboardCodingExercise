@@ -1,0 +1,32 @@
+﻿using Autofac;
+
+using DrawboardCodingExercise.Contracts.StarWars;
+using DrawboardCodingExercise.Services;
+using DrawboardCodingExercise.Services.StarWars;
+
+using JetBrains.Annotations;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+
+namespace DrawboardCodingExercise.Module;
+
+/// <summary>
+/// Defines the services that talk to the Drawboard API.
+/// </summary>
+[UsedImplicitly]
+public class WebServicesModule : Autofac.Module
+{
+	protected override void Load(ContainerBuilder builder)
+	{
+		var jsonSettings = new JsonSerializerSettings
+		{
+			ContractResolver = new CamelCasePropertyNamesContractResolver(),
+			Formatting = Formatting.Indented
+		};
+
+		builder.RegisterInstance(jsonSettings).AsSelf();
+		builder.RegisterType<APIClient>().As<IAPIClient>();
+        builder.RegisterType<StarWarsService>().As<IStarWarsService>();
+    }
+}
