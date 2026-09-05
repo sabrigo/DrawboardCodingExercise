@@ -71,6 +71,8 @@ public class FilmDetailViewModelTests
 		subject.Characters.ShouldBeEmpty();
 		subject.HasError.ShouldBeTrue();
 		_baseViewModel.EventAggregator.Received(1).Post(new NotifyDoneEvent("Busy.LoadingCharacters"));
+		_baseViewModel.Logger.Received(1)
+			.Error(Arg.Any<InvalidOperationException>(), "Failed to load {ViewModel}", nameof(FilmDetailViewModel));
 	}
 
 	[Fact]

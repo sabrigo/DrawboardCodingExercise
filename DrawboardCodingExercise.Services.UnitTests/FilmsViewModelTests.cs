@@ -75,6 +75,8 @@ namespace DrawboardCodingExercise.Services.UnitTests
 			subject.HasError.ShouldBeTrue();
 			subject.ErrorMessage.ShouldBe("Errors.LoadFailed");
 			await _baseviewModel.StarWarsService.Received(1).GetFilmsAsync();
+			_baseviewModel.Logger.Received(1)
+				.Error(Arg.Any<InvalidOperationException>(), "Failed to load {ViewModel}", nameof(FilmsViewModel));
 		}
 
 		[Fact]

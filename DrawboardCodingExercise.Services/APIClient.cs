@@ -134,7 +134,8 @@ public class APIClient : IAPIClient
 			// Where there is no status specific exception throw a catch-all exception containing the status code.
 			if (!response.IsSuccessStatusCode)
 			{
-				throw new HttpStatusException(response.StatusCode);
+				_logger.Error("REST {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.000} ms");
+                throw new HttpStatusException(response.StatusCode);
 			}
 
 			return response.Content;
