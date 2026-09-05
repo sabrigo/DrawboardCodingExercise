@@ -17,6 +17,7 @@
         <StackPanel MaxWidth="900" HorizontalAlignment="Left">
 
             <Border Style="{StaticResource CardStyle}"
+                    AutomationProperties.AutomationId="FilmDetailErrorBanner"
                     Margin="0,0,0,16"
                     Padding="12"
                     BorderBrush="{StaticResource TextBlockErrorBrush}"
@@ -29,6 +30,7 @@
                               Margin="0,2,12,0"
                               Foreground="{StaticResource TextBlockErrorBrush}" />
                     <TextBlock TextWrapping="Wrap"
+                               AutomationProperties.AutomationId="FilmDetailErrorMessage"
                                Text="{Binding ErrorMessage}"
                                d:Text="We could not load the characters." />
                 </StackPanel>
@@ -49,6 +51,7 @@
                                    Foreground="{StaticResource OnAccentBadgeBrush}"
                                    d:Text="Episode" />
                         <TextBlock Text="{Binding Film.EpisodeId}"
+                                   AutomationProperties.AutomationId="FilmDetailEpisode"
                                    HorizontalAlignment="Center"
                                    FontSize="30"
                                    LineHeight="34"
@@ -58,6 +61,7 @@
                     </StackPanel>
                 </Border>
                 <TextBlock Text="{Binding Film.Title}"
+                           AutomationProperties.AutomationId="FilmDetailTitle"
                            Margin="16,0,0,0"
                            VerticalAlignment="Center"
                            TextWrapping="Wrap"
@@ -76,35 +80,34 @@
                 <Border Grid.Column="0" Style="{StaticResource CardStyle}">
                     <StackPanel>
                         <TextBlock x:Uid="ReleaseDateLabel" Style="{StaticResource FieldLabelStyle}" d:Text="Release date" />
-                        <TextBlock Text="{Binding ReleaseDate}" Style="{StaticResource FieldValueStyle}" d:Text="25 May 1977" />
+                        <TextBlock AutomationProperties.AutomationId="FilmDetailReleaseDate" Text="{Binding ReleaseDate}" Style="{StaticResource FieldValueStyle}" d:Text="25 May 1977" />
                     </StackPanel>
                 </Border>
 
                 <Border Grid.Column="1" Style="{StaticResource CardStyle}">
                     <StackPanel>
                         <TextBlock x:Uid="DirectorLabel" Style="{StaticResource FieldLabelStyle}" d:Text="Director" />
-                        <TextBlock Text="{Binding Film.Director}" Style="{StaticResource FieldValueStyle}" d:Text="George Lucas" />
+                        <TextBlock AutomationProperties.AutomationId="FilmDetailDirector" Text="{Binding Film.Director}" Style="{StaticResource FieldValueStyle}" d:Text="George Lucas" />
                     </StackPanel>
                 </Border>
 
                 <Border Grid.Column="2" Style="{StaticResource CardStyle}">
                     <StackPanel>
                         <TextBlock x:Uid="ProducerLabel" Style="{StaticResource FieldLabelStyle}" d:Text="Producer" />
-                        <TextBlock Text="{Binding Film.Producer}" Style="{StaticResource FieldValueStyle}" d:Text="Gary Kurtz, Rick McCallum" />
+                        <TextBlock AutomationProperties.AutomationId="FilmDetailProducer" Text="{Binding Film.Producer}" Style="{StaticResource FieldValueStyle}" d:Text="Gary Kurtz, Rick McCallum" />
                     </StackPanel>
                 </Border>
             </Grid>
 
             <!-- Opening crawl -->
-            <TextBlock x:Uid="OpeningCrawlHeader" Style="{StaticResource SectionHeaderStyle}" d:Text="Opening crawl" />
-            <!-- ponytail: hugs its content - the API crawl text carries its own line breaks,
-                 so a full-width card would be mostly empty space -->
+            <TextBlock x:Uid="OpeningCrawlHeader" Style="{StaticResource SectionHeaderStyle}" d:Text="Opening crawl" />            
             <Border Style="{StaticResource CardStyle}"
                     HorizontalAlignment="Left"
                     CornerRadius="0,8,8,0"
                     BorderThickness="4,0,0,0"
                     BorderBrush="{StaticResource AccentBadgeBrush}">
                 <TextBlock Text="{Binding Film.OpeningCrawl}"
+                           AutomationProperties.AutomationId="FilmDetailOpeningCrawl"
                            TextWrapping="Wrap"
                            FontStyle="Italic"
                            FontSize="15"
@@ -120,13 +123,12 @@
                         CornerRadius="10"
                         Padding="8,2"
                         Background="{ThemeResource SystemControlBackgroundListLowBrush}">
-                    <TextBlock Text="{Binding Characters.Count}" Style="{StaticResource FieldLabelStyle}" d:Text="18" />
+                    <TextBlock AutomationProperties.AutomationId="FilmDetailCharacterCount" Text="{Binding Characters.Count}" Style="{StaticResource FieldLabelStyle}" d:Text="18" />
                 </Border>
             </StackPanel>
             <ItemsControl ItemsSource="{Binding Characters}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <!-- ponytail: fixed-size cells, no virtualization - a film has ~20 characters -->
                         <VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="212" ItemHeight="40" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
@@ -143,6 +145,7 @@
                                           Margin="0,0,8,0"
                                           Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
                                 <TextBlock Text="{Binding}"
+                                           AutomationProperties.AutomationId="FilmDetailCharacterName"
                                            TextTrimming="CharacterEllipsis"
                                            ToolTipService.ToolTip="{Binding}"
                                            d:Text="Luke Skywalker" />

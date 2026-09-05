@@ -20,6 +20,7 @@
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0"
+                AutomationProperties.AutomationId="FilmsErrorBanner"
                 Style="{StaticResource CardStyle}"
                 Margin="0,0,0,16"
                 Padding="12"
@@ -33,6 +34,7 @@
                           Margin="0,2,12,0"
                           Foreground="{StaticResource TextBlockErrorBrush}" />
                 <TextBlock TextWrapping="Wrap"
+                           AutomationProperties.AutomationId="FilmsErrorMessage"
                            Text="{Binding ErrorMessage}"
                            d:Text="We couldn't load the films." />
             </StackPanel>
@@ -40,14 +42,13 @@
 
         <ListView Grid.Row="1"
                   x:Name="FilmsList"
+                  AutomationProperties.AutomationId="FilmsList"
                   ItemsSource="{Binding Films}"
                   IsItemClickEnabled="True"
                   ItemClick="FilmsList_OnItemClick"
                   SelectionMode="None"
                   Padding="0,0,4,16">
-            <ListView.Resources>
-                <!-- ponytail: square hover highlight traded away so the rounded cards stay clean;
-                     the chevron carries the "clickable" affordance -->
+            <ListView.Resources>                
                 <SolidColorBrush x:Key="ListViewItemBackgroundPointerOver" Color="Transparent" />
                 <SolidColorBrush x:Key="ListViewItemBackgroundPressed" Color="Transparent" />
             </ListView.Resources>
@@ -84,6 +85,7 @@
                                                Foreground="{StaticResource OnAccentBadgeBrush}"
                                                d:Text="Episode" />
                                     <TextBlock Text="{Binding EpisodeId}"
+                                               AutomationProperties.AutomationId="FilmEpisode"
                                                HorizontalAlignment="Center"
                                                FontSize="26"
                                                LineHeight="30"
@@ -95,6 +97,7 @@
 
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                 <TextBlock Text="{Binding Title}"
+                                           AutomationProperties.AutomationId="FilmTitle"
                                            TextWrapping="Wrap"
                                            Style="{ThemeResource SubtitleTextBlockStyle}"
                                            d:Text="A New Hope" />

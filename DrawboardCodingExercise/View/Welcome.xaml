@@ -10,6 +10,7 @@
 
     <Grid>
         <Button x:Uid="BrowseFilmsButton"
+            AutomationProperties.AutomationId="BrowseFilmsButton"
             VerticalAlignment="Top"
             Command="{Binding BrowseFilmsCommand}"
             d:Content="Browse Star Wars films"

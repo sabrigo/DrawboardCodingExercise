@@ -9,9 +9,6 @@
         <SolidColorBrush x:Key="AccentBadgeBrush" Color="#FFE81F" />
         <SolidColorBrush x:Key="OnAccentBadgeBrush" Color="#FF1B1B1B" />
 
-        <!-- ponytail: no BasedOn on the built-in text styles - they are not in scope
-             from Application.Resources and the app crashes on launch. Values match
-             the Caption/Body/Subtitle metrics. -->
         <Style x:Key="CardStyle" TargetType="Border">
             <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundListLowBrush}" />
             <Setter Property="BorderBrush" Value="{ThemeResource SystemControlForegroundBaseLowBrush}" />

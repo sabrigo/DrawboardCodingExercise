@@ -28,10 +28,11 @@
 					<ColumnDefinition />
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
-				<Button Margin="0,0,8,0" Visibility="{Binding CanGoBack}" Command="{Binding GoBackCommand}">
+				<Button AutomationProperties.AutomationId="BackButton" Margin="0,0,8,0" Visibility="{Binding CanGoBack}" Command="{Binding GoBackCommand}">
 					<SymbolIcon Symbol="Back" />
 				</Button>
 				<TextBlock
+                    AutomationProperties.AutomationId="PageHeader"
                     Text="{Binding ElementName=NavFrame, Path=Content.DataContext, Converter={StaticResource PageHeaderValueConverter}, FallbackValue=Bleah}"
 					VerticalAlignment="Center"
                     Style="{StaticResource TitleTextBlockStyle}" Grid.Column="1" />
@@ -39,7 +40,7 @@
                             Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}">
 
 					<TextBlock VerticalAlignment="Center" Text="{Binding ThingInProgress}" />
-					<ProgressRing IsActive="{Binding IsBusy}"
+					<ProgressRing AutomationProperties.AutomationId="BusyRing" IsActive="{Binding IsBusy}"
                                   Margin="8,0"/>
 				</StackPanel>
 			</Grid>
